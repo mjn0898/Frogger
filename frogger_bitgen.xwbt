@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.ncd
+OUTFILE=/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project
+LICENSE=WebPack
+USER_INFO=211388128_0_0_211

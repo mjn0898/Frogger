@@ -1,0 +1,99 @@
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
+xst -intstyle ise -ifn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.xst" -ofn "/home/mujahid/dev/installs/xilinx/ee354/FinalProject/Project/frogger.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc nexys3.ucf -p xc6slx16-csg324-3 frogger.ngc frogger.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o frogger_map.ncd frogger.ngd frogger.pcf 
+par -w -intstyle ise -ol high -mt off frogger_map.ncd frogger.ncd frogger.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml frogger.twx frogger.ncd -o frogger.twr frogger.pcf -ucf nexys3.ucf 
+bitgen -intstyle ise -f frogger.ut frogger.ncd 
