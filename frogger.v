@@ -121,19 +121,130 @@ module frogger(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b, Sw0, Sw1, b
 	wire car4 = CounterX>(cnt) && CounterX<(50+cnt) && CounterY>200 && CounterY<220;
 	wire car5 = CounterX>(cnt2) && CounterX<(50+cnt2) && CounterY>300 && CounterY<320;
 	
+	wire hit_car1, hit_car2, hit_car3, hit_car4, hit_car5;
+	assign hit_car1 = ( ((((position-10)>=30) && ((position-10)<=50)) || (((position+10)>=30) && ((position+10)<=50))) 
+		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt)) && ((h_position+10)<=(50+cnt))) ) );
 	
-	
+	assign hit = hit_car1;
 	always @(posedge clk)
 	begin
-		vga_r <= (car1||car2||car3||car4||car5) & inDisplayArea;
-		vga_g <= frog & inDisplayArea;
-		vga_b <= vga_r & inDisplayArea;
+		vga_r <= (car1||car2||car3||car4||car5) & inDisplayArea & (state==ingame);
+		vga_g <= frog & inDisplayArea & (state==ingame);
+		vga_b <= vga_r & inDisplayArea & (state==ingame);
 	end
 	
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  VGA control ends here 	 ///////////////////
 	/////////////////////////////////////////////////////////////////
 	
+	reg[3:0] state;
+	
+	//reg[1:0] frogs = 2'b11;
+	integer frogs = 3;
+	// state declaration
+   localparam  [1:0]
+      newgame = 4'b0001,
+      ingame    = 4'b0010,
+      newlife = 4'b0100,
+      done    = 4'b1000;
+		
+		assign ack = btnR&&(state==done);
+		assign ack2 = btnL&&(state==done);
+always @ (posedge clk, posedge reset)
+	begin
+		if(reset)
+			begin
+				if(ack2)
+					state <= newgame;
+				//frogs <= 3;
+			end
+		else
+		begin
+			case(state)
+				newgame:
+					begin
+						state<=ingame;
+						frogs<=3;
+					end
+				ingame:
+					begin
+						if(hit)
+							frogs<=frogs-1;
+							if(frogs==1)
+								state<=done;
+					end
+				//newlife:
+				
+				done:
+					begin
+						if(ack)
+							state<=newgame;
+					end
+			endcase			
+		end
+	end
+	
+	//OFL
+
+
+/*		
+	always @ (posedge Clk, posedge reset)
+	begin
+		if(reset)
+			state <= QINIT;
+		else
+		begin
+			case(state)
+		
+				QINIT:
+					begin
+					if({U,Z}==2'b10)
+						state <= QG1GET;
+					end
+				QG1GET:
+					if(~U)
+						state <= QG1;
+				QG1:
+					if({U,Z}==2'b01)
+						state <= QG10GET;
+					else if(U)
+						state <= QBAD;
+				QG10GET:
+					if(~Z)
+						state <= QG10;
+				QG10:
+					if({U,Z}==2'b10)
+						state <= QG101GET;
+					else if(Z)
+						state <= QBAD;
+				QG101GET:
+					if(~U)
+						state <= QG101;
+				QG101:
+					if({U,Z}==2'b10)
+						//state <= QG1011GET;
+						state <= QG1011GET;
+					else if(Z)
+						state <= QBAD;
+				QG1011GET:
+					if(~U)
+						state <= QG1011;
+				QG1011:
+					state <= QOPENING;
+				QOPENING:
+					if(TO)
+						state <= QINIT;
+				QBAD:
+					if({U,Z}==2'b00)
+						state <= QINIT;
+			endcase			
+		end
+	end
+	
+	//OFL
+	assign Unlock = QOPENING;
+*/
+		
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  LD control starts here 	 ///////////////////
 	/////////////////////////////////////////////////////////////////
@@ -144,19 +255,19 @@ module frogger(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b, Sw0, Sw1, b
 	
 	reg [3:0] p2_score;
 	reg [3:0] p1_score;
-	reg [1:0] state;
+	reg [1:0] sstate;
 	wire LD0, LD1, LD2, LD3, LD4, LD5, LD6, LD7;
 	
 	assign LD0 = (p1_score == 4'b1010);
 	assign LD1 = (p2_score == 4'b1010);
 	
-	assign LD2 = start;
+	assign LD2 = hit_car1;
 	assign LD4 = reset;
 	
-	assign LD3 = (state == `QI);
-	assign LD5 = (state == `QGAME_1);	
-	assign LD6 = (state == `QGAME_2);
-	assign LD7 = (state == `QDONE);
+	assign LD3 = (sstate == `QI);
+	assign LD5 = (sstate == `QGAME_1);	
+	assign LD6 = (sstate == `QGAME_2);
+	assign LD7 = (sstate == `QDONE);
 	
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  LD control ends here 	 	////////////////////
