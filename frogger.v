@@ -124,8 +124,20 @@ module frogger(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b, Sw0, Sw1, b
 	wire hit_car1, hit_car2, hit_car3, hit_car4, hit_car5;
 	assign hit_car1 = ( ((((position-10)>=30) && ((position-10)<=50)) || (((position+10)>=30) && ((position+10)<=50))) 
 		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt)) && ((h_position+10)<=(50+cnt))) ) );
+		
+	assign hit_car2 = ( ((((position-10)>=80) && ((position-10)<=100)) || (((position+10)>=30) && ((position+10)<=50))) 
+		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt2)) && ((h_position+10)<=(50+cnt2))) ) );
+		
+	assign hit_car3 = ( ((((position-10)>=140) && ((position-10)<=160)) || (((position+10)>=30) && ((position+10)<=50))) 
+		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt3)) && ((h_position+10)<=(50+cnt3))) ) );
+		
+	assign hit_car4 = ( ((((position-10)>=200) && ((position-10)<=220)) || (((position+10)>=30) && ((position+10)<=50))) 
+		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt)) && ((h_position+10)<=(50+cnt))) ) );
+		
+	assign hit_car5 = ( ((((position-10)>=300) && ((position-10)<=320)) || (((position+10)>=30) && ((position+10)<=50))) 
+		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt2)) && ((h_position+10)<=(50+cnt2))) ) );
 	
-	assign hit = hit_car1;
+	assign hit = hit_car1 | hit_car2 | hit_car3 | hit_car4 | hit_car5;
 	always @(posedge clk)
 	begin
 		vga_r <= (car1||car2||car3||car4||car5) & inDisplayArea & (state==ingame);
