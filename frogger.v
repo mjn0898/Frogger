@@ -46,7 +46,7 @@ module frogger(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b, Sw0, Sw1, b
       else
 			DIV_CLK <= DIV_CLK + 1'b1;
 	end	
-
+	
 	assign	button_clk = DIV_CLK[18];
 	assign	clk = DIV_CLK[1];
 	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b11111};
@@ -68,100 +68,96 @@ module frogger(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b, Sw0, Sw1, b
 	reg [9:0] h_position;
 	reg [9:0] cnt, cnt2, cnt3;
 	
-	always @(posedge DIV_CLK[21])
+	assign orig = (state==newlife);
+	always @(posedge DIV_CLK[21], posedge orig)
 		begin
-			if(reset)
+			if(orig || (state==newgame) || (state==done))
 				begin
-					position<=500;
+					
+					position<=470;
 					h_position<=240;
 				end
 			else if(btnD && ~btnU)
-				position<=position+2;
+				position<=position+frogs;
 			else if(btnU && ~btnD)
-				position<=position-2;
+				position<=position-frogs;
 			else if(btnR && ~btnL)
-				h_position<=h_position+2;
+				h_position<=h_position+frogs;
 			else if(btnL && ~btnR)
-				h_position<=h_position-2;
+				h_position<=h_position-frogs;
 		end
 	
-	always @(posedge DIV_CLK[24])
+	always @(posedge DIV_CLK[24], posedge orig)
 		begin
-			if(reset || (cnt>480))
+			if(reset || (cnt>480) || (orig||(state==done))) 
 				begin
 					cnt<=0;
 				end
 			else
-				cnt<=cnt+5;
+				cnt<=cnt+(5*(4-frogs));
 		end
-	always @(posedge DIV_CLK[23])
+	always @(posedge DIV_CLK[23], posedge orig)
 		begin
-			if(reset || (cnt2>480))
+			if(reset || (cnt2>480) || (orig||(state==done)))
 				begin
 					cnt2<=0;
 				end
 			else
-				cnt2<=cnt2+5;
+				cnt2<=cnt2+(5*(4-frogs));
 		end
-	always @(posedge DIV_CLK[22])
+	always @(posedge DIV_CLK[22], posedge orig)
 		begin
-			if(reset || (cnt3>480))
+			if(reset || (cnt3>480) || (orig||(state==done)))
 				begin
 					cnt3<=0;
 				end
 			else
-				cnt3<=cnt3+5;
+				cnt3<=cnt3+(5*(4-frogs));
 		end
 		
 	wire frog = CounterY>=(position-10) && CounterY<=(position+10) && CounterX>=(h_position-10) && CounterX<=(h_position+10);
 	//wire R = CounterX>(cnt) && CounterX<(50+cnt) && CounterY[5:3]==7;
 	wire car1 = CounterX>(cnt) && CounterX<(50+cnt) && CounterY>30 && CounterY<50;
-	wire car2 = CounterX>(cnt2) && CounterX<(50+cnt2) && CounterY>80 && CounterY<100;
+	wire car2 = CounterX>(550-cnt2) && CounterX<(600-cnt2) && CounterY>80 && CounterY<100;
 	wire car3 = CounterX>(cnt3) && CounterX<(50+cnt3) && CounterY>140 && CounterY<160;
-	wire car4 = CounterX>(cnt) && CounterX<(50+cnt) && CounterY>200 && CounterY<220;
+	wire car4 = CounterX>(550-cnt) && CounterX<(600-cnt) && CounterY>200 && CounterY<220;
 	wire car5 = CounterX>(cnt2) && CounterX<(50+cnt2) && CounterY>300 && CounterY<320;
 	
-	wire hit_car1, hit_car2, hit_car3, hit_car4, hit_car5;
-	assign hit_car1 = ( ((((position-10)>=30) && ((position-10)<=50)) || (((position+10)>=30) && ((position+10)<=50))) 
-		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt)) && ((h_position+10)<=(50+cnt))) ) );
-		
-	assign hit_car2 = ( ((((position-10)>=80) && ((position-10)<=100)) || (((position+10)>=30) && ((position+10)<=50))) 
-		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt2)) && ((h_position+10)<=(50+cnt2))) ) );
-		
-	assign hit_car3 = ( ((((position-10)>=140) && ((position-10)<=160)) || (((position+10)>=30) && ((position+10)<=50))) 
-		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt3)) && ((h_position+10)<=(50+cnt3))) ) );
-		
-	assign hit_car4 = ( ((((position-10)>=200) && ((position-10)<=220)) || (((position+10)>=30) && ((position+10)<=50))) 
-		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt)) && ((h_position+10)<=(50+cnt))) ) );
-		
-	assign hit_car5 = ( ((((position-10)>=300) && ((position-10)<=320)) || (((position+10)>=30) && ((position+10)<=50))) 
-		&& ( (((h_position-10)>=(cnt)) && ((h_position-10)<=(50+cnt))) || (((h_position+10)>=(cnt2)) && ((h_position+10)<=(50+cnt2))) ) );
+	wire life1 = CounterY>=460 && CounterY<=465 && CounterX>=0 && CounterX<=5 && frogs>=1;
+	wire life2 = CounterY>=460 && CounterY<=465 && CounterX>=10 && CounterX<=15 && frogs>=2;
+	wire life3 = CounterY>=460 && CounterY<=465 && CounterX>=20 && CounterX<=25 && frogs>=3;
 	
-	assign hit = hit_car1 | hit_car2 | hit_car3 | hit_car4 | hit_car5;
+	wire target = CounterY>=0 && CounterY<=10;
+	
+	assign hit = frog && (car1 || car2 || car3 || car4 || car5) && (state==ingame);
+	assign victory = frog && target;
+	
 	always @(posedge clk)
 	begin
-		vga_r <= (car1||car2||car3||car4||car5) & inDisplayArea & (state==ingame);
-		vga_g <= frog & inDisplayArea & (state==ingame);
-		vga_b <= vga_r & inDisplayArea & (state==ingame);
+		vga_r <= (car1||car2||car3||car4||car5) & inDisplayArea || target;
+		vga_g <= frog & inDisplayArea || life1 || life2 || life3;
+		vga_b <= vga_r & inDisplayArea && (~target);
 	end
 	
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  VGA control ends here 	 ///////////////////
 	/////////////////////////////////////////////////////////////////
 	
-	reg[3:0] state;
+	reg[3:0] state = newgame;
 	
+	
+	reg temp = 0;
 	//reg[1:0] frogs = 2'b11;
 	integer frogs = 3;
 	// state declaration
-   localparam  [1:0]
+   localparam  [3:0]
       newgame = 4'b0001,
       ingame    = 4'b0010,
       newlife = 4'b0100,
       done    = 4'b1000;
 		
 		assign ack = btnR&&(state==done);
-		assign ack2 = btnL&&(state==done);
+		assign ack2 = btnL;
 always @ (posedge clk, posedge reset)
 	begin
 		if(reset)
@@ -181,12 +177,23 @@ always @ (posedge clk, posedge reset)
 				ingame:
 					begin
 						if(hit)
-							frogs<=frogs-1;
-							if(frogs==1)
-								state<=done;
+							begin
+								
+								frogs<=frogs-1;
+								if(frogs!=1)
+									state<=newlife;
+								else 
+									state<=done;
+							end
+						if(victory)
+							state<=done;
 					end
-				//newlife:
-				
+				newlife:
+					begin
+						
+						state<=ingame;
+					end
+					
 				done:
 					begin
 						if(ack)
@@ -264,22 +271,23 @@ always @ (posedge clk, posedge reset)
 	`define QGAME_1 	2'b01
 	`define QGAME_2 	2'b10
 	`define QDONE 		2'b11
-	
+	/*
 	reg [3:0] p2_score;
 	reg [3:0] p1_score;
 	reg [1:0] sstate;
+	*/
 	wire LD0, LD1, LD2, LD3, LD4, LD5, LD6, LD7;
 	
-	assign LD0 = (p1_score == 4'b1010);
-	assign LD1 = (p2_score == 4'b1010);
+	assign LD0 = (state == done);
+	assign LD1 = 0;
 	
-	assign LD2 = hit_car1;
-	assign LD4 = reset;
+	assign LD2 = hit;//hit_car1;
+	assign LD4 = orig;
 	
-	assign LD3 = (sstate == `QI);
-	assign LD5 = (sstate == `QGAME_1);	
-	assign LD6 = (sstate == `QGAME_2);
-	assign LD7 = (sstate == `QDONE);
+	assign LD3 = (state == newgame);
+	assign LD5 = (state == ingame);	
+	assign LD6 = (state == newlife);
+	assign LD7 = 0;
 	
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  LD control ends here 	 	////////////////////
@@ -292,10 +300,11 @@ always @ (posedge clk, posedge reset)
 	wire 	[3:0]	SSD0, SSD1, SSD2, SSD3;
 	wire 	[1:0] ssdscan_clk;
 	
-	assign SSD3 = 4'b1111;
+	assign SSD3 = state;
 	assign SSD2 = 4'b1111;
-	assign SSD1 = 4'b1111;
-	assign SSD0 = position[3:0];
+	assign SSD1 = hit;
+	//assign SSD0 = position[3:0];
+	assign SSD0 = frogs[1:0];
 	
 	// need a scan clk for the seven segment display 
 	// 191Hz (50MHz / 2^18) works well
